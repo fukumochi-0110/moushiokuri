@@ -49,6 +49,5 @@ test:
 #
 production:
   <<: *default
-  database: moushiokuri_production
-  username: moushiokuri
-  password: <%= ENV['MOUSHIOKURI_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
