@@ -1,24 +1,58 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usersテーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+|--------------------|--------|---------------------------|
+| name               | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
 
-* Ruby version
+### Association
+has_many :units
 
-* System dependencies
+## Unitsテーブル
 
-* Configuration
+| Column | Type   | Options     |
+|--------|--------|-------------|
+| name   | string | null: false |
 
-* Database creation
+### Association
+belongs_to :user
+has_many :messages
+has_many :tasks
 
-* Database initialization
+## Messagesテーブル
 
-* How to run the test suite
+| Column  | Type       | Options                        |
+|---------|------------|--------------------------------|
+| text    | string     | null: false                    |
+| name    | string     | null: false                    |
+| Date_id | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+belongs_to :unit
+belongs_to :event_date
 
-* Deployment instructions
+## Tasksテーブル
 
-* ...
+| Column  | Type       | Options                        |
+|---------|------------|--------------------------------|
+| text    | string     | null: false                    |
+| name    | string     | null: false                    |
+| date_id | references | null: false, foreign_key: true |
+
+### Association
+belongs_to :unit
+belongs_to :event_date
+
+
+## Event_datesテーブル
+
+| Column     | Type | Options     |
+|------------|------|-------------|
+| event_date | date | null: false |
+
+### Association
+has_many :messages
+has_many :tasks
