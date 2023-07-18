@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: "units#index"
+  devise_for :users
+  resources :units, only: [:index, :show, :new, :create] do
+    resources :home, only: [:index]
+  end
 end

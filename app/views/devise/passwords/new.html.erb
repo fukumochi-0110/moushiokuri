@@ -1,0 +1,18 @@
+<h2>パスワードをお忘れですか？</h2>
+
+<%= form_for(@user, url: new_user_password_path, html: { method: :post }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label "メールアドレス" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "メールを送信", class: "btn" %>
+  </div>
+<% end %>
+
+
+<%= link_to "ログイン", new_user_session_path, class: "link" %><br />
+<%= link_to "新規登録はこちらから", new_user_registration_path, class: "link" %>
