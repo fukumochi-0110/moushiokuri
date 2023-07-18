@@ -13,9 +13,10 @@ has_many :units
 
 ## Unitsテーブル
 
-| Column | Type   | Options     |
-|--------|--------|-------------|
-| name   | string | null: false |
+| Column  | Type       | Options                        |
+|---------|------------|--------------------------------|
+| name    | string     | null: false                    |
+| user_id | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
@@ -28,7 +29,7 @@ has_many :tasks
 |---------|------------|--------------------------------|
 | text    | string     | null: false                    |
 | name    | string     | null: false                    |
-| Date_id | references | null: false, foreign_key: true |
+| date_id | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :unit
