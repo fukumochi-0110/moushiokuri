@@ -2,7 +2,7 @@
 
 <div class="form-container">
   <div class="form">
-    <%= form_for(@user, url: new_user_registration_path) do |f| %>
+    <%= form_for(@user, url: user_registration_path) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
     
     <div class="field">
