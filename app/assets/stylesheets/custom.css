@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@700&display=swap');
 
 /* タイトル */
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
 h2 {
   padding: 10px 0 0 20px;
   font-size: 40px;
@@ -60,3 +64,44 @@ h2 {
 #check {
   margin-top: 5px;
 }
+
+/* unit画面 */
+.unit {
+  display: flex;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unit-back {
+  background-color: #A2D7DD;
+  width: 80%;
+  height: 30px;
+  margin: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.unit-name { 
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.unit-link {
+  align-items: center;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.bottom-link {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+}
+
