@@ -13,7 +13,7 @@ h2 {
   font-weight: bold;
 }
 
-* フォーム */
+/* フォーム */
 .form-container {
   display: flex;
   flex-direction: column;
