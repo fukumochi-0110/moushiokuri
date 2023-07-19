@@ -13,13 +13,17 @@ h2 {
   font-weight: bold;
 }
 
+.hello-name {
+  margin-left: 20px;
+}
+
 /* フォーム */
 .form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+
 }
 
 .field {
