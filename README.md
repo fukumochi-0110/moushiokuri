@@ -50,9 +50,9 @@ belongs_to :event_date
 
 ## Event_datesテーブル
 
-| Column     | Type | Options     |
-|------------|------|-------------|
-| event_date | date | null: false |
+| Column     | Type | Options |
+|------------|------|---------|
+| event_date | date |         |
 
 ### Association
 has_many :messages
