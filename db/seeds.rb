@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+start_date = Date.new(2023, 1, 1)
+end_date = Date.new(2033, 12, 31)
+
+(start_date..end_date).each do |date|
+  EventDate.create(event_date: date)  
+end

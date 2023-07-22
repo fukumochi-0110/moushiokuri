@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :units, only: [:index, :show, :new, :create] do
     resources :home, only: [:index]
   end
+  
 end
