@@ -1,3 +1,32 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
+<header class="home-header">
+    <h1>
+      <%= current_user.name %>
+    </h1>
+    <h1>
+    <%= @unit.name %></h1>
+    </h1>
+</header>
+
+<div class="main-content">
+  <div class="home-date">
+    <div class="home-content-title">日付</div>
+    <%= form_with url: unit_home_index_path, method: :get, local: true, class: "date-search" do |f| %>
+        <%= f.date_select :event_date, discard_day: true %>
+        <%= f.submit '検索' %>
+      <% end %>
+    <div class="date-content">
+      <% @event_date.each do |ed| %>
+        <div class="date-font"><%= ed.event_date.strftime("%Y年  %-m月  %d日") %></div>
+      <% end %>
+    </div>
+  </div>
+  <div class="home-message">
+    <div class="home-content-title">申し送り</div>
+    <div class="message-content"></div>
+  </div>
+  <div class="home-task">
+    <div class="home-content-title">タスク</div>
+    <div class="task-content"></div>
+  </div>
+</div>
+
