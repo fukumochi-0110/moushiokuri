@@ -3,14 +3,14 @@
       <%= current_user.name %>
     </h1>
     <h1>
-    <%= @unit.name %></h1>
+      <%= @unit.name %>
     </h1>
 </header>
 
 <div class="main-content">
   <div class="home-date">
     <div class="home-content-title">日付</div>
-    <%= form_with url: unit_home_index_path, method: :get, local: true, class: "date-search" do |f| %>
+    <%= form_with url: unit_home_index_path(@unit), method: :get, local: true, class: "date-search" do |f| %>
         <%= f.date_select :event_date, discard_day: true %>
         <%= f.submit '検索' %>
       <% end %>
@@ -20,10 +20,44 @@
       <% end %>
     </div>
   </div>
+
   <div class="home-message">
     <div class="home-content-title">申し送り</div>
-    <div class="message-content"></div>
-  </div>
+      <%= form_with model: @message, url: messages_path, local: true, scope: :message do |f| %>
+        <% if flash[:error] %>
+          <div class="error-alert">
+            <ul>
+              <% flash[:error].each do |message| %>
+                <li class='error-message'><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div>
+          <%= f.label "内容" %><br /> 
+          <%= f.text_area :text %>
+        </div>
+        <div>
+          <%= f.label "名前" %><br /> 
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :event_date, "日付" %>
+          <%= f.date_field :event_date %>
+        </div>
+        <%= f.hidden_field :unit_id, value: @unit.id %>
+        <%= f.submit "保存", class: :form__btn  %>
+      <% end %>
+
+      <div class="message-content">
+        <% @messages.each do |message| %>
+          <div>
+            <%= message.text %>
+            <%= message.name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <div class="home-task">
     <div class="home-content-title">タスク</div>
     <div class="task-content"></div>
