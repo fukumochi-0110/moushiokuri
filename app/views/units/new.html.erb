@@ -2,7 +2,7 @@
 
 <%= form_with model: @unit, local: true do |f| %>
 
-<%= render 'shared/error_messages', model: f.object %>
+<%= render 'shared/error_messages', resource: @unit %>
 
   <div class="field">
     <%= f.label "階層名もしくはユニット名" %>
