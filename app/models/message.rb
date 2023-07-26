@@ -6,4 +6,5 @@ class Message < ApplicationRecord
 
   belongs_to :unit
   belongs_to :event_date
+  has_one_attached :image
 end
