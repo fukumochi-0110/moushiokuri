@@ -38,13 +38,14 @@ belongs_to :event_date
 
 ## Tasksテーブル
 
-| Column | Type       | Options                        |
-|--------|------------|--------------------------------|
-| text   | string     | null: false                    |
-| name   | string     | null: false                    |
-| date   | references | null: false, foreign_key: true |
-| unit   | references | null: false, foreign_key: true |
-
+| Column    | Type       | Options                        |
+|-----------|------------|--------------------------------|
+| text      | string     | null: false                    |
+| name      | string     | null: false                    |
+| date      | references | null: false, foreign_key: true |
+| unit      | references | null: false, foreign_key: true |
+| completed | boolean    | null: false                    |
+| due_date  | datetime   | null: false                    |
 
 ### Association
 belongs_to :unit
