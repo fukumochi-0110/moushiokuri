@@ -20,7 +20,21 @@ class UnitsController < ApplicationController
   end
 
   def show
+    @unit = Unit.find(params[:id])
   end
+
+  def edit
+    @unit = Unit.find(params[:id])
+  end
+
+   def update
+    unit = Unit.find(params[:id])
+    if unit.update(unit_params)
+      redirect_to units_path
+    else
+      render :edit
+    end
+   end
 
   private
 

@@ -1,0 +1,15 @@
+<h1>階層もしくはユニット名を編集する</h1>
+
+<%= form_with model: @unit, local: true do |f| %>
+
+<%= render 'shared/error_messages', resource: @unit %>
+
+  <div class="field">
+
+    <%= f.text_field :name, class: "form-control", placeholder: @unit.name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "編集", class: "btn" %>
+  </div>
+<% end %>
