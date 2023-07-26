@@ -15,6 +15,20 @@ class MessagesController < ApplicationController
       redirect_to unit_home_index_path(@unit)
     end
   end
+
+  def edit
+    @message = Message.find(params[:id])
+    @unit = @message.unit
+  end
+
+  def update
+    @message = Message.find(params[:id])
+    if @message.update(message_params)
+      redirect_to unit_home_index_path(unit_id: @message.unit_id)
+    else
+      render :edit
+    end
+  end
   
   private
   def message_params

@@ -19,6 +19,7 @@ class HomeController < ApplicationController
     @event_date = EventDate.where(event_date: start_date..end_date)
 
     # 申し送り機能
+    @message = Message.new
     today = Date.today 
     today_date = EventDate.find_by(event_date: today)
     @messages = Message.where(event_date_id: today_date.id, unit_id: params[:unit_id])
