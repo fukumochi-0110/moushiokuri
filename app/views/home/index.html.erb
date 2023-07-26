@@ -33,20 +33,26 @@
             </ul>
           </div>
         <% end %>
-        <div>
-          <%= f.label "内容" %><br /> 
-          <%= f.text_area :text %>
+        <div class="message-form-content">
+          <div class="message-form-left">
+            <div class="message-form">
+              <%= f.text_area :text, placeholder: "内容" %>
+            </div>
+            <div>
+              <%= f.text_field :name, placeholder: "名前" %>
+            </div>
+          </div>
+          <div class="message-form-right">
+            <div class="message-date">
+              <%= f.date_field :event_date %>
+            </div>
+            <div class="message-form">
+              <%= f.file_field :image %>
+            </div>
+            <%= f.hidden_field :unit_id, value: @unit.id %>
+            <%= f.submit "保存", class: "message-btn" %>
         </div>
-        <div>
-          <%= f.label "名前" %><br /> 
-          <%= f.text_field :name %>
         </div>
-        <div>
-          <%= f.label :event_date, "日付" %>
-          <%= f.date_field :event_date %>
-        </div>
-        <%= f.hidden_field :unit_id, value: @unit.id %>
-        <%= f.submit "保存", class: :form__btn  %>
       <% end %>
 
       <div class="message-content">
@@ -54,6 +60,8 @@
           <div>
             <%= message.text %>
             <%= message.name %>
+            <%= message.created_at.in_time_zone('Tokyo').strftime("%H:%M") %>
+            <%= image_tag url_for(message.image), class: "message-image" if message.image.attached? %>
           </div>
         <% end %>
       </div>
