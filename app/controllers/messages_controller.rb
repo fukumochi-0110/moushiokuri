@@ -20,6 +20,6 @@ class MessagesController < ApplicationController
   def message_params
     event_date = EventDate.find_by(event_date: params[:message][:event_date])
     params[:message][:event_date_id] = event_date.id if event_date
-    params.require(:message).permit(:text,:name,:unit_id, :event_date_id)
+    params.require(:message).permit(:text,:name,:unit_id, :event_date_id, :image)
   end
 end
