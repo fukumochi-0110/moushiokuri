@@ -62,6 +62,8 @@
             <%= message.name %>
             <%= message.created_at.in_time_zone('Tokyo').strftime("%H:%M") %>
             <%= image_tag url_for(message.image), class: "message-image" if message.image.attached? %>
+            <%= link_to "編集", edit_message_path(message) %>
+            <%= link_to "削除", message_path(message), method: :delete %>
           </div>
         <% end %>
       </div>
