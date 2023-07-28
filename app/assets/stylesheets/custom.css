@@ -214,7 +214,7 @@ h2 {
   object-fit: contain;
 }
 
-.meesage-edit-content {
+.message-edit-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -224,3 +224,43 @@ h2 {
 }
 
 /* task */
+.task-content {
+  flex: 1;
+  height: calc(100% - 181.95px);
+  overflow-y: auto;
+  margin: 10px 10px;
+}
+
+.task-form-content{
+  display: flex;
+  margin: 0 10px;
+  width: 590px;
+}
+
+.task-form-left {
+  width: 50%;
+}
+
+.task-form-right {
+  width: 50%;
+  margin-right: 30px;
+}
+
+.task-form, 
+.task-date {
+  margin-bottom: 10px;
+}
+
+.task-btn {
+  float: right;
+  width: 30%;
+}
+
+.task-edit-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 79.677px);
+  width: 100vw;
+  
+}
