@@ -9,7 +9,7 @@
 
 <div class="main-content">
   <div class="home-date">
-    <div class="home-content-title">日付</div>
+
     <%= form_with url: unit_home_index_path(@unit), method: :get, local: true, class: "date-search" do |f| %>
         <%= f.date_select :event_date, discard_day: true %>
         <%= f.submit '検索' %>
@@ -22,12 +22,11 @@
   </div>
 
   <div class="home-message">
-    <div class="home-content-title">申し送り</div>
       <%= form_with model: @message, url: messages_path, local: true, scope: :message do |f| %>
-        <% if flash[:error] %>
+        <% if flash[:message_error] %>
           <div class="error-alert">
             <ul>
-              <% flash[:error].each do |message| %>
+              <% flash[:message_error].each do |message| %>
                 <li class='error-message'><%= message %></li>
               <% end %>
             </ul>
@@ -36,7 +35,7 @@
         <div class="message-form-content">
           <div class="message-form-left">
             <div class="message-form">
-              <%= f.text_area :text, placeholder: "内容" %>
+              <%= f.text_area :text, placeholder: "申し送り" %>
             </div>
             <div>
               <%= f.text_field :name, placeholder: "名前" %>
@@ -44,14 +43,14 @@
           </div>
           <div class="message-form-right">
             <div class="message-date">
-              <%= f.date_field :event_date %>
+              <%= f.hidden_field :event_date, value: @today_date.event_date %>
             </div>
             <div class="message-form">
               <%= f.file_field :image %>
             </div>
             <%= f.hidden_field :unit_id, value: @unit.id %>
             <%= f.submit "保存", class: "message-btn" %>
-        </div>
+          </div>
         </div>
       <% end %>
 
@@ -69,8 +68,68 @@
       </div>
     </div>
   <div class="home-task">
-    <div class="home-content-title">タスク</div>
-    <div class="task-content"></div>
+    <%= form_with model: @task, url: tasks_path, local: true, scope: :task do |f| %>
+        <% if flash[:task_error] %>
+          <div class="error-alert">
+            <ul>
+              <% flash[:task_error].each do |message| %>
+                <li class='error-message'><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        
+
+        <div class="task-form-content">
+          <div class="task-form-left">
+            <div class="task-form">
+              <%= f.text_area :text, placeholder: "タスク" %>
+            </div>
+            <div>
+              <%= f.text_field :name, placeholder: "名前" %>
+            </div>
+          </div>
+          <div class="task-form-right">
+            <div class="task-date">期限：
+              <%= f.time_field :due_date %>
+            </div>
+            <%= f.hidden_field :completed, value: false %>
+            <%= f.hidden_field :event_date, value: @today_date.event_date %>
+            <%= f.hidden_field :unit_id, value: @unit.id %>
+            <%= f.submit "保存", class: "task-btn" %>
+          </div>
+        </div>
+    <% end %>
+
+    <div class="task-content">未完了
+      <div class="non-comp">
+        <% @completed.each do |task| %>
+        <div class="not-conp">
+          <%= form_with model: task, local: true, scope: :task do |f| %>
+            <%= f.check_box :completed %>
+          <% end %>
+          <%= task.text %>
+          <%= task.name %>
+          <%= task.due_date.strftime("%H:%M") %>
+          <%= link_to "編集", edit_task_path(task) %>
+        </div>
+      <% end %>
+      </div>
+      <div class="comp">完了済み
+        <% @non_completed.each do |task| %>
+        <div class="not-conp">
+          <%= form_with model: task, local: true, scope: :task do |f| %>
+            <%= f.check_box :completed %>
+          <% end %>
+          <%= task.text %>
+          <%= task.name %>
+          <%= task.due_date.strftime("%H:%M") %>
+          <%= link_to "編集", edit_task_path(task) %>
+        </div>
+      <% end %>
+      </div>
+      
+    </div>
   </div>
 </div>
 
