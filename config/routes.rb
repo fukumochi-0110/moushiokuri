@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:create, :edit, :update, :destroy]
-  resources :tasks, only: [:create]
+  resources :tasks, only: [:create, :edit, :update,]
 
 end
