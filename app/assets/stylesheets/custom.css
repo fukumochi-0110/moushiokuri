@@ -214,5 +214,13 @@ h2 {
   object-fit: contain;
 }
 
+.meesage-edit-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 79.677px);
+  width: 100vw;
+  
+}
 
 /* task */
