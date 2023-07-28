@@ -1,0 +1,22 @@
+<%= form_with model: @task, url: task_path(@task), local: true, scope: :task do |f| %>
+<%= render 'shared/error_messages', resource: @task %>
+  <div class="task-content">
+    <div class="task-form-left">
+      <div class="task-form">
+        <%= f.text_area :text, placeholder: "タスク" %>
+      </div>
+      <div>
+        <%= f.text_field :name, placeholder: "名前" %>
+      </div>
+    </div>
+    <div class="task-form-right">
+      <div class="task-due-date">
+        <%= f.date_field :due_date %>
+        <%= f.check_box :completed %>
+      </div>
+      <%= f.hidden_field :event_date, value: @today_date.event_date %>
+      <%= f.hidden_field :unit_id, value: @unit.id %>
+      <%= f.submit "保存", class: "task-btn" %>
+    </div>
+  </div>
+<% end %>
