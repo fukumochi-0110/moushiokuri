@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :unit_same_user
+
   def index
     # 階層に結びつくhomeを表示する
     @unit = Unit.find_by(id: params[:unit_id])
@@ -25,5 +27,11 @@ class HomeController < ApplicationController
     @messages = Message.where(event_date_id: today_date.id, unit_id: params[:unit_id])
   end
 
-  
+  private
+  def unit_same_user
+    unit = Unit.find(params[:unit_id])
+    unless current_user.id == unit.user_id
+      redirect_to root_path
+    end
+  end
 end
