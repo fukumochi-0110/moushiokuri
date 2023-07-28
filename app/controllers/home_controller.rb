@@ -23,8 +23,15 @@ class HomeController < ApplicationController
     # 申し送り機能
     @message = Message.new
     today = Date.today 
-    today_date = EventDate.find_by(event_date: today)
-    @messages = Message.where(event_date_id: today_date.id, unit_id: params[:unit_id])
+    @today_date = EventDate.find_by(event_date: today)
+    @messages = Message.where(event_date_id: @today_date.id, unit_id: params[:unit_id])
+
+    # タスク機能
+    @task = Task.new
+    today = Date.today 
+    @today_date = EventDate.find_by(event_date: today)
+    @completed = Task.where(event_date_id: @today_date.id, unit_id: params[:unit_id], completed: 0)
+    @non_completed = Task.where(event_date_id: @today_date.id, unit_id: params[:unit_id], completed: 1)
   end
 
   private
