@@ -1,8 +1,8 @@
 <header class="home-header">
-    <h1>
-      <%= current_user.name %>
+    <h1 class="corp-link">
+      <%= link_to current_user.name, units_path %>
     </h1>
-    <h1>
+    <h1 class="corp-name">
       <%= @unit.name %>
     </h1>
 </header>
@@ -12,7 +12,10 @@
 
     <%= form_with url: unit_home_index_path(@unit), method: :get, local: true, class: "date-search" do |f| %>
         <%= f.date_select :event_date, discard_day: true %>
-        <%= f.submit '検索' %>
+        <div>
+          <%= f.submit '検索', class: "date-btn" %>
+        </div>
+        
       <% end %>
     <div class="date-content">
       <% @event_date.each do |ed| %>
@@ -56,13 +59,22 @@
 
       <div class="message-content">
         <% @messages.each do |message| %>
-          <div>
-            <%= message.text %>
-            <%= message.name %>
-            <%= message.created_at.in_time_zone('Tokyo').strftime("%H:%M") %>
-            <%= image_tag url_for(message.image), class: "message-image" if message.image.attached? %>
-            <%= link_to "編集", edit_message_path(message) %>
-            <%= link_to "削除", message_path(message), method: :delete %>
+          <div class="moushiokuri">
+            <div class="moushiokuri-title">
+              <div>申し送り</div>
+            </div>
+            <div class="moushiokuri-text">
+              <%= message.text %>
+            </div>
+            <div class="moushiokuri-image">
+              <%= image_tag url_for(message.image), class: "message-image" if message.image.attached? %>
+            </div>
+            <div class="moushiokuri-under">
+              <%= message.name %>
+              <%= message.created_at.in_time_zone('Tokyo').strftime("%H:%M") %>
+              <%= link_to "編集", edit_message_path(message), class: "moushiokuri-link" %>
+              <%= link_to "削除", message_path(message), method: :delete, class: "moushiokuri-link" %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -101,29 +113,31 @@
         </div>
     <% end %>
 
-    <div class="task-content">未完了
+    <div class="task-content">
       <div class="non-comp">
-        <% @completed.each do |task| %>
-        <div class="not-conp">
-          <%= form_with model: task, local: true, scope: :task do |f| %>
-            <%= f.check_box :completed %>
-          <% end %>
-          <%= task.text %>
-          <%= task.name %>
-          <%= task.due_date.strftime("%H:%M") %>
-          <%= link_to "編集", edit_task_path(task) %>
-        </div>
-      <% end %>
-      </div>
-      <div class="comp">完了済み
+        <div class="comp-title">未完了</div>
         <% @non_completed.each do |task| %>
-        <div class="not-conp">
-          <%= form_with model: task, local: true, scope: :task do |f| %>
-            <%= f.check_box :completed %>
-          <% end %>
+          <div class="not-comp">
+            <%= task.text %>
+            <%= task.name %>
+            <%= task.due_date.strftime("%H:%M") %>
+            <%= form_with model: task, local: true, scope: :task do |f| %>
+              <%= f.check_box :completed %>
+            <% end %>
+            <%= link_to "編集", edit_task_path(task) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="comp">
+        <div class="comp-title">完了済み</div>
+        <% @completed.each do |task| %>
+        <div class="complete">
           <%= task.text %>
           <%= task.name %>
           <%= task.due_date.strftime("%H:%M") %>
+          <%= form_with model: task, local: true, scope: :task do |f| %>
+              <%= f.check_box :completed %>
+            <% end %>
           <%= link_to "編集", edit_task_path(task) %>
         </div>
       <% end %>
