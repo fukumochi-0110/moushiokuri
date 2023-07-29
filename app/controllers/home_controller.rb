@@ -30,8 +30,8 @@ class HomeController < ApplicationController
     @task = Task.new
     today = Date.today 
     @today_date = EventDate.find_by(event_date: today)
-    @completed = Task.where(event_date_id: @today_date.id, unit_id: params[:unit_id], completed: 0)
-    @non_completed = Task.where(event_date_id: @today_date.id, unit_id: params[:unit_id], completed: 1)
+    @non_completed = Task.where(event_date_id: @today_date.id, unit_id: params[:unit_id], completed: 0)
+    @completed = Task.where(event_date_id: @today_date.id, unit_id: params[:unit_id], completed: 1)
   end
 
   private
