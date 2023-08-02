@@ -1,10 +1,15 @@
-<header class="home-header">
-    <h1 class="corp-link">
-      <%= link_to current_user.name, units_path %>
-    </h1>
-    <h1 class="corp-name">
-      <%= @unit.name %>
-    </h1>
+<header>
+  <div class="home-header">
+    <%= image_tag 'taskyrelay.jpg', class: "logo" %>
+    <div class="header-content">
+      <h1 class="corp-link">
+        <%= link_to current_user.name, units_path %>
+      </h1>
+      <h1 class="corp-name">
+        <%= @unit.name %>
+      </h1>
+    </div>
+  </div>
 </header>
 
 <div class="main-content">
@@ -19,7 +24,9 @@
       <% end %>
     <div class="date-content">
       <% @event_date.each do |ed| %>
-        <div class="date-font"><%= ed.event_date.strftime("%Y年  %-m月  %d日") %></div>
+        <div class="date-font">
+          <%= link_to ed.event_date.strftime("%Y年  %-m月  %d日"),  controller: :home, action: :index, date: ed.event_date, unit_id: @unit_id %>
+        </div>
       <% end %>
     </div>
   </div>
@@ -61,7 +68,7 @@
         <% @messages.each do |message| %>
           <div class="moushiokuri">
             <div class="moushiokuri-title">
-              <div>申し送り</div>
+              <div><%= @date ? @date.strftime("%m/%d") : @today_date.event_date.strftime("%m/%d") %>  申し送り</div>
             </div>
             <div class="moushiokuri-text">
               <%= message.text %>
@@ -103,7 +110,7 @@
           </div>
           <div class="task-form-right">
             <div class="task-date">期限：
-              <%= f.time_field :due_date %>
+              <%= f.datetime_local_field :due_date %>
             </div>
             <%= f.hidden_field :completed, value: false %>
             <%= f.hidden_field :event_date, value: @today_date.event_date %>
@@ -118,13 +125,15 @@
         <div class="comp-title">未完了</div>
         <% @non_completed.each do |task| %>
           <div class="not-comp">
-            <%= task.text %>
-            <%= task.name %>
-            <%= task.due_date.strftime("%H:%M") %>
-            <%= form_with model: task, local: true, scope: :task do |f| %>
-              <%= f.check_box :completed %>
-            <% end %>
-            <%= link_to "編集", edit_task_path(task) %>
+            <div class="task-text"><%= task.text %></div>
+            <div class="task-under">
+              <%= task.name %>
+              期限：<%= task.due_date.strftime("%-m/%d  %H:%M") %>
+              <%= form_with model: task, scope: :task, url: task_path(task), id: "form-#{task.id}" do |f| %>
+                <%= f.check_box :completed, id: "check-#{task.id}" %>
+              <% end %>
+              <%= link_to "編集", edit_task_path(task), class: "moushiokuri-link"  %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -132,13 +141,13 @@
         <div class="comp-title">完了済み</div>
         <% @completed.each do |task| %>
         <div class="complete">
-          <%= task.text %>
+          <div class="task-text"><%= task.text %></div>
           <%= task.name %>
-          <%= task.due_date.strftime("%H:%M") %>
-          <%= form_with model: task, local: true, scope: :task do |f| %>
-              <%= f.check_box :completed %>
-            <% end %>
-          <%= link_to "編集", edit_task_path(task) %>
+          期限：<%= task.due_date.strftime("%H:%M") %>
+          <%= form_with model: task, scope: :task, url: task_path(task), id: "form-#{task.id}" do |f| %>
+              <%= f.check_box :completed, id: "check-#{task.id}" %>
+          <% end %>
+          <%= link_to "編集", edit_task_path(task), class: "moushiokuri-link"  %>
         </div>
       <% end %>
       </div>
