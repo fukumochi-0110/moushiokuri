@@ -11,7 +11,7 @@
     </div>
     <div class="task-form-right">
       <div class="task-due-date">
-        <%= f.date_field :due_date %>
+        <%= f.datetime_local_field :due_date %>
         <%= f.check_box :completed %>
       </div>
       <%= f.hidden_field :event_date, value: @today_date.event_date %>
