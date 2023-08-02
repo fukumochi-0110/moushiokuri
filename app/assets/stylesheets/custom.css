@@ -119,11 +119,22 @@ h2 {
   margin-bottom: 4px;
 }
 
+.logo{
+  width: 192px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.header-content{
+  display: flex;
+}
+
 .corp-name{
   text-decoration: underline #6CCCE4;
 }
 
 h1.corp-link a {
+  margin-right: 20px;
   text-decoration: none;
   color: #100f0f;
   text-decoration: underline #FFBB1E;
@@ -131,7 +142,7 @@ h1.corp-link a {
 
 
 .main-content {
-  height: calc(100vh - 83.67px);
+  height: calc(100vh - 90px);
   display: flex;
   background-color: #ffffff;
 }
@@ -285,7 +296,6 @@ h1.corp-link a {
 .task-content {
   flex: 1;
   height: calc(100% - 90.594px);
-  overflow-y: auto;
   margin: 10px 10px;
 }
 
@@ -318,7 +328,7 @@ h1.corp-link a {
   height: 49%;
   border: solid 2px #e7e6e6;
   border-radius: 5px;
-  
+  overflow-y: auto;
 }
 
 .comp {
@@ -326,6 +336,7 @@ h1.corp-link a {
   height: 49%;
   border: solid 2px #e7e6e6;
   border-radius: 5px;
+  overflow-y: auto;
 }
 
 .comp-title {
@@ -339,6 +350,7 @@ h1.corp-link a {
   margin-right: 10px;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  margin-bottom: 15px;
 }
 .not-comp form,
 .complete form {
@@ -349,6 +361,16 @@ h1.corp-link a {
   flex-wrap: wrap;
   word-wrap: break-word;
   overflow-wrap: break-word;
+}
+
+.task-text {
+  padding: 5px 3px 10px 5px;
+}
+
+.task-under{
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 10px;
 }
 
 .task-edit-content {
