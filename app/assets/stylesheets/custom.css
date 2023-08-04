@@ -157,6 +157,11 @@ h1.corp-link a {
   border-radius: 0 10px 10px 0;
 }
 
+.home-date a{
+  text-decoration: none;
+  color: #100f0f;
+}
+
 .home-message {
   width: 590px;
   border-radius: 20px;
@@ -324,14 +329,14 @@ h1.corp-link a {
   width: 30%;
 }
 
-.non-comp {
+#non-comp {
   height: 49%;
   border: solid 2px #e7e6e6;
   border-radius: 5px;
   overflow-y: auto;
 }
 
-.comp {
+#comp {
   margin-top: 11.77px;
   height: 49%;
   border: solid 2px #e7e6e6;
