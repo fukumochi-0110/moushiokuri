@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_24_160012) do
+ActiveRecord::Schema.define(version: 2023_07_26_144853) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(version: 2023_07_24_160012) do
     t.index ["unit_id"], name: "index_messages_on_unit_id"
   end
 
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "text", null: false
+    t.string "name", null: false
+    t.bigint "event_date_id", null: false
+    t.bigint "unit_id", null: false
+    t.boolean "completed", default: false, null: false
+    t.datetime "due_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_date_id"], name: "index_tasks_on_event_date_id"
+    t.index ["unit_id"], name: "index_tasks_on_unit_id"
+  end
+
   create_table "units", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -74,5 +87,7 @@ ActiveRecord::Schema.define(version: 2023_07_24_160012) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "messages", "event_dates"
   add_foreign_key "messages", "units"
+  add_foreign_key "tasks", "event_dates"
+  add_foreign_key "tasks", "units"
   add_foreign_key "units", "users"
 end
