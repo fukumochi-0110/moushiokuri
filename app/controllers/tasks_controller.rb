@@ -21,7 +21,11 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to unit_home_index_path(unit_id: @task.unit_id)
+      if params[:is_ajax] == 'true'
+        render json: { task: @task }
+      else
+        redirect_to unit_home_index_path(unit_id: @task.unit_id)
+      end
     else
       render :edit
     end
