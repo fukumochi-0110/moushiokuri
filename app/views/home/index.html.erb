@@ -121,10 +121,10 @@
     <% end %>
 
     <div class="task-content">
-      <div class="non-comp">
+      <div id="non-comp">
         <div class="comp-title">未完了</div>
         <% @non_completed.each do |task| %>
-          <div class="not-comp">
+          <div class="not-comp" id="task-<%= task.id %>">
             <div class="task-text"><%= task.text %></div>
             <div class="task-under">
               <%= task.name %>
@@ -137,21 +137,22 @@
           </div>
         <% end %>
       </div>
-      <div class="comp">
+      <div id="comp">
         <div class="comp-title">完了済み</div>
         <% @completed.each do |task| %>
-        <div class="complete">
-          <div class="task-text"><%= task.text %></div>
-          <%= task.name %>
-          期限：<%= task.due_date.strftime("%H:%M") %>
-          <%= form_with model: task, scope: :task, url: task_path(task), id: "form-#{task.id}" do |f| %>
-              <%= f.check_box :completed, id: "check-#{task.id}" %>
-          <% end %>
-          <%= link_to "編集", edit_task_path(task), class: "moushiokuri-link"  %>
-        </div>
-      <% end %>
+          <div class="complete" id="task-<%= task.id %>">
+            <div class="task-text"><%= task.text %></div>
+            <div class="task-under">
+              <%= task.name %>
+              期限：<%= task.due_date.strftime("%-m/%d  %H:%M") %>
+              <%= form_with model: task, scope: :task, url: task_path(task), id: "form-#{task.id}" do |f| %>
+                <%= f.check_box :completed, id: "check-#{task.id}" %>
+              <% end %>
+              <%= link_to "編集", edit_task_path(task), class: "moushiokuri-link"  %>
+            </div>
+          </div>
+        <% end %>
       </div>
-      
     </div>
   </div>
 </div>
