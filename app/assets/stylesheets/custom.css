@@ -110,10 +110,7 @@ h2 {
 }
 
 /* home */
-
 .home-header {
-  width: 100%; /* 追加 */
-
   display: flex;
   justify-content: space-between;
   padding: 0 50px;
@@ -148,13 +145,12 @@ h1.corp-link a {
   height: calc(100vh - 90px);
   display: flex;
   background-color: #ffffff;
-  width: 100vw;
 }
 
 .home-date {
   display: flex;
   flex-direction: column;
-  width: 15.277777777777779%;
+  width: 260px;
   background-color: #e7e6e6;
   margin: 10px 0;
   padding-top: 10px;
@@ -224,7 +220,7 @@ h1.corp-link a {
 .message-form-content{
   display: flex;
   margin: 0 10px;
-  width: 39.58333333333333%;
+  width: 590px;
 
 }
 
@@ -311,7 +307,7 @@ h1.corp-link a {
 .task-form-content{
   display: flex;
   margin: 0 10px;
-  width: 39.58333333333333%;
+  width: 590px;
 }
 
 .task-form-left {
