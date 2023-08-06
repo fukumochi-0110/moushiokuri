@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'top/index'
-  root to: "units#index"
+  root to: "top#index"
   devise_for :users
   resources :units, only: [:index, :show, :new, :create, :edit, :update] do
     resources :home, only: [:index]

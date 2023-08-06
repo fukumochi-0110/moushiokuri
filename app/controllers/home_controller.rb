@@ -49,7 +49,7 @@ class HomeController < ApplicationController
   def unit_same_user
     unit = Unit.find(params[:unit_id])
     unless current_user.id == unit.user_id
-      redirect_to root_path
+      redirect_to units_path
     end
   end
 end
