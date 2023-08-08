@@ -1,0 +1,57 @@
+/* unit画面 */
+.unit-content {
+  margin-top: 100px;
+}
+
+.unit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.unit-back {
+  border-bottom: 3px solid #FFBB1E;
+  width: 50%;
+  height: auto;
+  margin: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+}
+
+.unit-name { 
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.unit-link {
+  align-items: center;
+  color: black;
+  text-decoration: none;
+}
+
+.unit-left{
+  font-size: 30px;
+}
+
+.unit-right {
+
+}
+.bottom-link {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* 編集画面と新規作成画面 */
+
+.unit-edit,
+.unit-new {
+  margin-top: 50px;
+}
+
+.unit-new
