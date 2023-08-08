@@ -1,22 +1,23 @@
+<%= render 'shared/header' %>
 
-<h3 class="hello-name">こんにちは、<%= current_user.name %>さん</h1><h1>階層もしくはユニット名を選択してください</h1>
-
-<% @units.each do |unit| %>
-<div class="unit">
-  <div class="unit-back">
-    <div class="unit-name">
-      <div class="unit-left">
-        <%= link_to unit.name, unit_home_index_path(unit), class: "unit-link" %>
-      </div>
-      <div class="unit-right">
-        <%= link_to "編集する", unit_path(unit), class: "unit-link" %>
+<div class="unit-content">
+  <% @units.each do |unit| %>
+  <div class="unit">
+    <div class="unit-back">
+      <div class="unit-name">
+        <div class="unit-left">
+          <%= link_to unit.name, unit_home_index_path(unit), class: "unit-link" %>
+        </div>
+        <div class="unit-right">
+          <%= link_to "編集する", edit_unit_path(unit), class: "unit-link" %>
+        </div>
       </div>
     </div>
   </div>
+  <% end %>
 </div>
-<% end %>
+
 
 <div class="bottom-link">
-  <%= link_to "階層もしくはユニットを新規作成 ", new_unit_path, class: "link" %>/
-  <%= link_to "ログアウト",destroy_user_session_path, method: :delete %>
+  <%= link_to "階層もしくはユニットを新規作成 ", new_unit_path, class: "link" %>
 </div>
