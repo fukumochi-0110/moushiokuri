@@ -1,0 +1,14 @@
+<header>
+  <div class="home-header">
+    <%= link_to image_tag('taskyrelay.jpg', class: "logo"), root_path %>
+    <div class="top-header">
+      <% if user_signed_in? %>
+        <div class="left-header-name"><%= link_to current_user.name, units_path %></div>
+        <div class="right-header"><%= link_to "ログアウト", destroy_user_session_path, method: :delete  %></div>
+      <% else %>
+        <div class="left-header"><%= link_to "ログイン", new_user_session_path %></div>
+        <div class="right-header"><%= link_to "新規登録はこちらから", new_user_registration_path %></div>
+      <% end %>
+    </div>
+  </div>
+</header>
