@@ -1,6 +1,6 @@
 <header>
   <div class="home-header">
-    <%= image_tag 'taskyrelay.jpg', class: "logo" %>
+    <%= link_to image_tag('taskyrelay.jpg', class: "logo"), root_path %>
     <div class="header-content">
       <h1 class="corp-link">
         <%= link_to current_user.name, units_path %>

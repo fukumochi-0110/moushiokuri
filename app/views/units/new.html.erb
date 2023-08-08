@@ -1,11 +1,13 @@
-<h1>階層もしくはユニット名を新規作成</h1>
+<%= render 'shared/header' %>
+
+<div class="unit-new">
+  <h1>階層もしくはユニット名を新規作成</h1>
 
 <%= form_with model: @unit, local: true do |f| %>
 
 <%= render 'shared/error_messages', resource: @unit %>
 
   <div class="field">
-    <%= f.label "階層名もしくはユニット名" %>
     <%= f.text_field :name, class: "form-control" %>
   </div>
 
@@ -13,3 +15,4 @@
     <%= f.submit "作成する", class: "btn" %>
   </div>
 <% end %>
+</div>

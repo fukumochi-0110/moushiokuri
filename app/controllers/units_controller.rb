@@ -1,5 +1,5 @@
 class UnitsController < ApplicationController
-  
+  before_action :check_ownership, only: [:edit]
 
   def index
     @units = Unit.where(user_id: current_user.id)
@@ -40,6 +40,13 @@ class UnitsController < ApplicationController
 
   def unit_params
     params.require(:unit).permit(:name).merge(user_id: current_user.id)
+  end
+
+  def check_ownership
+    unit = Unit.find(params[:id])
+    if current_user.id != unit.user_id
+      redirect_to root_path
+    end
   end
   
 end

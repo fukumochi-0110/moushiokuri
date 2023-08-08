@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :same_action, only: [:edit, :update, :destroy]
+  before_action :same_action, only: [:edit, :update, :destroy, :message_ownership]
+  before_action :message_ownership, only: [:edit, :update, :delete]
 
   def create
     @unit = Unit.find_by(id: params[:message][:unit_id])
@@ -46,6 +47,14 @@ class MessagesController < ApplicationController
   def same_action
     @message = Message.find(params[:id])
     @unit = @message.unit
+  end
+
+  def message_ownership
+
+    
+    if @unit && @unit.user_id != current_user.id
+      redirect_to units_path(@unit)
+    end
   end
 end
 
