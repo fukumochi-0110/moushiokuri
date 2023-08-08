@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: "top#index"
   devise_for :users
-  resources :units, only: [:index, :show, :new, :create, :edit, :update] do
+  resources :units, only: [:index, :new, :create, :edit, :update] do
     resources :home, only: [:index]
   end
 
