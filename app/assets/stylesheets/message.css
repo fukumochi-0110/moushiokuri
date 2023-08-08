@@ -1,0 +1,88 @@
+
+/* message */
+.message-content {
+  flex: 1;
+  height: calc(100% - 90.594px);
+  overflow-y: auto;
+  margin: 10px 10px;
+}
+
+.message-form-content{
+  display: flex;
+  margin: 0 10px;
+  width: 590px;
+
+}
+
+.message-form-left {
+  width: 50%;
+}
+
+.message-form-right {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.message-form, 
+.message-date {
+  margin-bottom: 10px;
+}
+
+.message-btn {
+  float: right;
+  width: 30%;
+}
+
+.moushiokuri {
+  border-radius: 5px;
+  border: solid 2px #e7e6e6;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.moushiokuri-title{
+  color: #100f0f;
+  background-color: #FFBB1E;
+  padding: 2px 10px 2px 10px;
+  border-radius: 3px 3px 0 0;
+}
+
+.moushiokuri-text{
+  padding: 5px 3px 10px 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.moushiokuri-image {
+  display: flex;
+  justify-content: center;
+}
+
+.message-image {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+.moushiokuri-under {
+  text-align: right;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.moushiokuri-link {
+  text-decoration: none;
+  color:white;
+  background-color: #6CCCE4;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.message-edit-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 79.677px);
+  width: 100vw;
+  
+}
