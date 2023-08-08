@@ -14,12 +14,13 @@
 
 .left-header a{
   text-decoration: none;
-  color:
+  color: white;
   margin-right: 20px;
   font-size: 20px;
   background-color: #FFBB1E;
   padding: 5px;
   border-radius: 5px;
+  border: 1px solid #E6A000;
 }
 
 .right-header a {
@@ -31,7 +32,10 @@
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #E6A000;
-
+}
+.left-header:hover a {
+  background-color: #FFDD4F;
+  border: 1px solid #FFBB1E;
 }
 
 .right-header:hover a {
