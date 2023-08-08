@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :task_ownership,only: [:edit, :update]
+  
   def create
     @unit = Unit.find_by(id: params[:task][:unit_id])
     @task = Task.new(task_params)
@@ -37,5 +39,14 @@ class TasksController < ApplicationController
     params[:task][:event_date_id] = event_date.id if event_date
     params[:task][:completed] = params[:task][:completed] == '1'
     params.require(:task).permit(:text,:name,:unit_id, :event_date_id, :due_date, :completed)
+  end
+
+  def task_ownership
+    @task = Task.find(params[:id])
+    @unit = @task.unit
+    
+    if @unit && @unit.user_id != current_user.id
+      redirect_to units_path(@unit)
+    end
   end
 end
