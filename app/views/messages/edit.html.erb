@@ -1,5 +1,7 @@
-<h1>申し送りの編集画面</h1>
-<div class="meesage-edit-content">
+<%= render 'shared/header' %>
+
+
+<div class="message-edit-content">
   <div class="meesage-edit">
     <%= form_with model: @message, local: true, scope: :message do |f| %>
       <%= render 'shared/error_messages', resource: @message %>
@@ -14,6 +16,7 @@
         </div>
         <div class="message-form-right">
           <div class="message-date">
+            <div class="message-edit-date">申し送りの日付を変更する</div>
             <%= f.date_field :event_date %>
           </div>
           <div class="message-form">

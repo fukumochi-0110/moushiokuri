@@ -84,5 +84,8 @@
   align-items: center;
   height: calc(100vh - 79.677px);
   width: 100vw;
-  
+}
+
+.message-edit-date {
+  margin-bottom: 10px; 
 }
