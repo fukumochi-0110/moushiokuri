@@ -88,3 +88,16 @@
   
 }
 
+/* edit */
+.edit-task-form-content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.edit-task-btn{
+  float: right;
+  width: 30%;
+  margin-top: 25px;
+}
