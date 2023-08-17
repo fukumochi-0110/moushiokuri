@@ -5,8 +5,8 @@ function search (){
   const form = document.getElementById("form");
   const formData = new FormData(form);
   const XHR = new XMLHttpRequest();
-  const query = form.q.value; // 検索入力フィールドの値を取得
-  XHR.open("GET", "/search?q=" + query, true); // URLにクエリパラメータを追加  
+  const query = form.q.value; 
+  XHR.open("GET", "/search?q=" + query, true); 
   XHR.responseType = "json";
   XHR.send(formData);
   XHR.onload = () => {
