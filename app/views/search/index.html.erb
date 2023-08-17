@@ -1,0 +1,30 @@
+<%= form_with url: search_index_path, method: :get, local: true do |f| %>
+  <%= f.text_field :q, placeholder: '検索...' , id:"search-text" %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<% if params[:q] %>
+  <div>申し送りの検索結果
+    <% if @messages_search.present? %>
+      <% @messages_search.each do |message| %>
+        <div>
+          <%= message.text %>
+        </div>
+      <% end %>
+    <% else %>
+      <div>申し送りは見つかりませんでした</div>
+    <% end %>
+  </div>
+
+  <div>タスクの検索結果
+    <% if @tasks_search.present? %>
+      <% @tasks_search.each do |task| %>
+        <div>
+          <%= task.text %>
+        </div>
+      <% end %>
+    <% else %>
+      <div>タスクは見つかりませんでした</div>
+    <% end %>
+  </div>
+<% end %>
