@@ -6,6 +6,8 @@ class SearchController < ApplicationController
     if params[:q].present?
       @messages_search = Message.where(unit_id: user_units).ransack(name_or_text_cont: params[:q]).result
       @tasks_search = Task.where(unit_id: user_units).ransack(name_or_text_cont: params[:q]).result
+      render json:{ messages_search: @messages_search, tasks_search: @tasks_search }
+
     else
       @messages_search = []
       @tasks_search = []
