@@ -1,6 +1,17 @@
 <header>
   <div class="home-header">
     <%= link_to image_tag('taskyrelay.jpg', class: "logo"), root_path %>
+    <div class="search-content">
+      <%= form_with url: search_index_path, method: :get, local: true, id:"form", class:"search-form"  do |f| %>
+        <%= f.text_field :q, placeholder: '申し送りの検索' %>
+        <%= f.submit "検索", id:"submit" %>
+      <% end %>
+      <div id="wrapper-container">
+        <div id="searchResultOverlay" class="overlay">
+          <div id="searchResultTable" class="result-table"></div>
+        </div>
+      </div>
+    </div>
     <div class="header-content">
       <h1 class="corp-link">
         <%= link_to current_user.name, units_path %>
@@ -154,6 +165,12 @@
         <% end %>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="wrapper-container">
+  <div id="searchResultOverlay" class="overlay">
+    <div id="searchResultTable" class="result-table"></div>
   </div>
 </div>
 

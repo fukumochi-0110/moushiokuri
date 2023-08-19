@@ -29,10 +29,12 @@ class MessagesController < ApplicationController
 
   def destroy
     
+
+    unit_id = @message.unit_id
     if @message.destroy
-      redirect_to unit_home_index_path(unit_id: @message.unit_id)
+      redirect_to unit_home_index_path(unit_id: unit_id)
     else
-      render :index
+      render 'home#index'
     end
   end
   
@@ -45,7 +47,7 @@ class MessagesController < ApplicationController
   end
 
   def same_action
-    @message = Message.find(params[:id])
+    @message = Message.find_by(id: params[:id])
     @unit = @message.unit
   end
 
