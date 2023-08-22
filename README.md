@@ -77,7 +77,7 @@ deviseを用いて、新規登録とログイン機能を実装しました。
 	検索機能を実装に実装中。
 
 ## データベース設計
-[![データベース設計](https://i.gyazo.com/c439830c611f387faf10a20d53b6e553.png)](https://gyazo.com/c439830c611f387faf10a20d53b6e553)
+[![Image from Gyazo](https://i.gyazo.com/688b764a06fb3b0b113f83a558ed0367.png)](https://gyazo.com/688b764a06fb3b0b113f83a558ed0367)
 
 ## 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/915e3fee49e5df976f944b9f669b59c0.png)](https://gyazo.com/915e3fee49e5df976f944b9f669b59c0)
